@@ -3,7 +3,7 @@
 echo "Whitetail Militia CertTool"
 read -p "FQDN : " fqdn
 echo "Generating CSR..."
-openssl req -new -newkey rsa:4096 -nodes -keyout $fqdn.key -out $fqdn.csr -subj "/C=US/ST=New_York/L=Rochester/O=Whitetail Militia/OU=IT Department/CN=$fqdn"
+openssl req -new -newkey rsa:4096 -nodes -keyout $fqdn.key -out $fqdn.csr -subj "/C=US/ST=New_York/L=Rochester/O=Whitetail Militia/OU=IT Department/CN=$fqdn" -addext "subjectAltName = DNS:$fqdn"
 echo "CSR Generated Successfully!"
 echo "Here is the CSR:\n"
 cat $fqdn.csr
